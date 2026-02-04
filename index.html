@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ardiansyah - Portfolio & Jasa Digital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1a2a3a;
+            --accent-blue: #3498db;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --dark-gray: #34495e;
+            --success-green: #2ecc71;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        nav {
+            background: var(--primary-blue);
+            color: white;
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        nav .logo { font-size: 1.5rem; font-weight: bold; letter-spacing: 1px; }
+
+        nav ul { display: flex; list-style: none; }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+
+        nav ul li a:hover { color: var(--accent-blue); }
+
+        /* Section General */
+        section { padding: 100px 8% 60px; }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.2rem;
+            position: relative;
+            color: var(--primary-blue);
+        }
+
+        h2::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: var(--accent-blue);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Home Section */
+        #home {
+            height: 100vh;
+            background: linear-gradient(rgba(26, 42, 58, 0.8), rgba(26, 42, 58, 0.8)), 
+                        url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .portfolio-item:hover { transform: translateY(-10px); }
+
+        .portfolio-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 4px solid var(--accent-blue);
+        }
+
+        .portfolio-info { padding: 20px; }
+        .portfolio-info h3 { margin-bottom: 10px; color: var(--primary-blue); }
+        .tag {
+            display: inline-block;
+            background: #e1f0fa;
+            color: var(--accent-blue);
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* Pricing Table */
+        .pricing-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .pricing-table th { background: var(--primary-blue); color: white; padding: 20px; }
+        .pricing-table td { padding: 18px; text-align: left; border-bottom: 1px solid #eee; }
+        .pricing-table td:last-child { text-align: center; font-weight: bold; color: var(--accent-blue); }
+        
+        .service-list { list-style: none; font-size: 0.85rem; color: #666; margin-top: 5px; }
+        .service-list li i { color: var(--success-green); margin-right: 5px; }
+
+        /* Contact Cards */
+        .contact-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .phone-card {
+            width: 300px;
+            border-radius: 20px;
+            background: white;
+            text-decoration: none;
+            color: #333;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .phone-card:hover { transform: scale(1.05); }
+
+        .wa-header { background: #25D366; color: white; padding: 20px; }
+        .fb-header { background: #1877F2; color: white; padding: 20px; }
+        .card-body { padding: 20px; }
+
+        footer { text-align: center; padding: 30px; background: var(--primary-blue); color: white; }
+
+        @media (max-width: 768px) { 
+            nav ul { display: none; } 
+            section { padding: 80px 5% 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">ARDIANSYAH</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#tentang">Tentang</a></li>
+            <li><a href="#portfolio">Hasil Karya</a></li>
+            <li><a href="#layanan">Harga</a></li>
+            <li><a href="#alamat">Alamat</a></li>
+            <li><a href="#kontak">Kontak</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <h1>Jasa Pembuatan Digital</h1>
+        <p>Solusi Website & Aplikasi Android bersama Ardiansyah</p>
+        <a href="#kontak" style="background:var(--accent-blue); color:white; padding:12px 30px; border-radius:30px; text-decoration:none; margin-top:20px; display:inline-block; font-weight:bold;">Mulai Project Sekarang</a>
+    </section>
+
+    <section id="tentang">
+        <h2>Tentang Saya</h2>
+        <div style="max-width:800px; margin:0 auto; text-align:center;">
+            <p>Saya <strong>Ardiansyah</strong>, pengembang teknologi dari Janapria. Saya berfokus menciptakan produk digital yang membantu mempercepat bisnis dan urusan Anda melalui website yang elegan dan aplikasi android yang fungsional.</p>
+        </div>
+    </section>
+
+    <section id="portfolio" style="background: #f1f1f1;">
+        <h2>Hasil Karya</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=500&q=60" alt="Web Toko" class="portfolio-img">
+                <div class="portfolio-info">
+                    <span class="tag">Web Design</span>
+                    <h3>Website Berkah Printing</h3>
+                    <p>Website Pelayanan Printing, Fotocopy, dan Jasa Digital.</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=500&q=60" alt="App Android" class="portfolio-img">
+                <div class="portfolio-info">
+                    <span class="tag">Android App</span>
+                    <h3>Aplikasi Absensi Android</h3>
+                    <p>Aplikasi mobile untuk manajemen kehadiran karyawan/siswa.</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=60" alt="Sistem Informasi" class="portfolio-img">
+                <div class="portfolio-info">
+                    <span class="tag">Web System</span>
+                    <h3>Dispuarsip System</h3>
+                    <p>Sistem Informasi Pelayanan Perpustakaan & Kearsipan.</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&w=500&q=60" alt="Maintenance" class="portfolio-img">
+                <div class="portfolio-info">
+                    <span class="tag">Maintenance</span>
+                    <h3>Optimalisasi Landing Page</h3>
+                    <p>Perbaikan layout dan percepatan loading speed website klien.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="layanan">
+        <h2>Daftar Harga & Layanan</h2>
+        <div class="pricing-container">
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>Paket Utama</th>
+                        <th>Estimasi Harga</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Website Sederhana</strong><br><small>Landing page, Company Profile</small></td>
+                        <td>Rp 50rb - 100rb</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Web + Aplikasi (Standar)</strong><br><small>Sistem Informasi, Custom Web</small></td>
+                        <td>Rp 150rb - 500rb</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Aplikasi Android Full Fitur</strong><br><small>Integrasi Database, Notifikasi, API</small></td>
+                        <td>Rp 1jt - 2jt</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>🧩 Layanan Tambahan (Harga Terjangkau)</h3>
+            <table class="pricing-table">
+                <tbody>
+                    <tr>
+                        <td>
+                            <strong>1. Revisi & Perbaikan Website</strong>
+                            <ul class="service-list">
+                                <li><i class="fas fa-check-circle"></i> Perbaikan tampilan (layout, warna, font)</li>
+                                <li><i class="fas fa-check-circle"></i> Perbaikan error ringan</li>
+                                <li><i class="fas fa-check-circle"></i> Rapikan kode HTML / CSS</li>
+                                <li><i class="fas fa-check-circle"></i> Fix tampilan di HP / laptop</li>
+                            </ul>
+                        </td>
+                        <td>Rp 50rb - 150rb</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>2. Update & Tambah Konten</strong>
+                            <ul class="service-list">
+                                <li><i class="fas fa-check-circle"></i> Update teks & gambar</li>
+                                <li><i class="fas fa-check-circle"></i> Tambah halaman baru</li>
+                                <li><i class="fas fa-check-circle"></i> Upload artikel / produk</li>
+                                <li><i class="fas fa-check-circle"></i> Edit konten lama</li>
+                            </ul>
+                        </td>
+                        <td>Rp 50rb - 200rb</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>3. Instalasi & Setting Website</strong>
+                            <ul class="service-list">
+                                <li><i class="fas fa-check-circle"></i> Install WordPress / Laravel / CMS</li>
+                                <li><i class="fas fa-check-circle"></i> Setting database</li>
+                                <li><i class="fas fa-check-circle"></i> Konfigurasi dasar hosting</li>
+                                <li><i class="fas fa-check-circle"></i> Setup domain & SSL</li>
+                            </ul>
+                        </td>
+                        <td>Rp 50rb - 150rb</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="alamat" style="background:#f1f1f1;">
+        <h2>Alamat</h2>
+        <p style="text-align:center; margin-bottom:20px;">Repok Repaok, Desa Selebung, Kec. Janapria</p>
+        <div style="width:100%; height:350px; border-radius:15px; overflow:hidden; box-shadow:0 5px 15px rgba(0,0,0,0.1);">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15768.800000000001!2d116.34!3d-8.73!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOMKwNDMnNDguMCJTIDExNiwyMCcyNC4wIkU!5e0!3m2!1sid!2sid!4v1700000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <section id="kontak">
+        <h2>Kontak Langsung</h2>
+        <div class="contact-container">
+            <a href="https://wa.me/6287782685802" class="phone-card" target="_blank">
+                <div class="wa-header"><i class="fab fa-whatsapp fa-3x"></i></div>
+                <div class="card-body">
+                    <p><strong>WhatsApp</strong></p>
+                    <p>0877-8268-5802</p>
+                </div>
+            </a>
+            <a href="https://www.facebook.com/search/top?q=Ancah%20Hansyah" class="phone-card" target="_blank">
+                <div class="fb-header"><i class="fab fa-facebook fa-3x"></i></div>
+                <div class="card-body">
+                    <p><strong>Facebook</strong></p>
+                    <p>Ancah Hansyah</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Ardiansyah - Developer Janapria</p>
+    </footer>
+
+    <script>
+        // Script untuk navigasi halus
+        document.querySelectorAll('nav a').forEach(el => {
+            el.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const target = document.querySelector(targetId);
+                if(target) {
+                    window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
